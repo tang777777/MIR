@@ -17,65 +17,67 @@ Next, unzip the **DRD2_score.sav.zip** to  **DRD2_score.sav**.
 
   - **datasets:** contains the original datasets and preprocessed datasets. Each dataset contains three columns, separated by ";" into scaffolds, decorations, and SMILES strings.
 	  - QM9_10k_LEN_3.csv
+    	  - GEN_QM9_10k_LEN_3.csv
 	  - ZINC_10k_LEN_10.csv
+    	  - GEN_ZINC_10k_LEN_10.csv
   - **results:** all generated datasets, saved models, and experimental results are saved in this folder.
 	  - **save_models:** all training results, pre-trained and trained filler and discriminator models are saved in this folder.
 	  - **test:** all test results are saved in this folder.
 
 ## Experimental Reproduction
 
-  - SpotGAN on the QM9 dataset with drug-likeness as the optimized property:
+  - MIR on the QM9 dataset with drug-likeness as the optimized property:
   ``` 
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train
   ```
-  - SpotGAN on the QM9 dataset with solubility as the optimized property:
+  - MIR on the QM9 dataset with solubility as the optimized property:
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --properties 'solubility'
   ```
-  - SpotGAN on the QM9 dataset with synthesizability as the optimized property:
+  - MIR on the QM9 dataset with synthesizability as the optimized property:
   ```  
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --properties 'synthesizability'
   ```
-  - SpotGAN on the ZINC dataset with drug-likeness as the optimized property:
+  - MIR on the ZINC dataset with drug-likeness as the optimized property:
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --dataset_name 'ZINC_10k' --dec_min_len 10 --filler_epochs 200 --decoration_max_len 50 --filler_d_model 256 --filler_max_lr 1e-4 --filler_optimizer 'Adam' --adv_epochs 50
   ```
-  - SpotGAN on the ZINC dataset with solubility as the optimized property:
+  - MIR on the ZINC dataset with solubility as the optimized property:
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --dataset_name 'ZINC_10k' --dec_min_len 10 --filler_epochs 200 --decoration_max_len 50 --filler_d_model 256 --filler_max_lr 1e-4 --filler_optimizer 'Adam' --adv_epochs 50 --properties 'solubility'
   ```	
-  - SpotGAN on the ZINC dataset with synthesizability as the optimized property:
+  - MIR on the ZINC dataset with synthesizability as the optimized property:
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --dataset_name 'ZINC_10k' --dec_min_len 10 --filler_epochs 200 --decoration_max_len 50 --filler_d_model 256 --filler_max_lr 1e-4 --filler_optimizer 'Adam' --adv_epochs 50 --properties 'synthesizability'
   ```
-  - SpotWGAN on the QM9 dataset with drug-likeness as the optimized property:
+  - WGAN on the QM9 dataset with drug-likeness as the optimized property:
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --dis_wgan --dis_minibatch --dis_max_lr 1e-4
   ```
-  - SpotWGAN on the QM9 dataset with solubility as the optimized property:
+  - WGAN on the QM9 dataset with solubility as the optimized property:
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --dis_wgan --dis_minibatch --properties 'solubility' --dis_max_lr 1e-4
   ```
-  - SpotWGAN on the QM9 dataset with synthesizability as the optimized property:
+  - WGAN on the QM9 dataset with synthesizability as the optimized property:
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --dis_wgan --dis_minibatch --properties 'synthesizability' --dis_max_lr 1e-4
   ```
-  - SpotWGAN on the ZINC dataset with drug-likeness as the optimized property:
+  - WGAN on the ZINC dataset with drug-likeness as the optimized property:
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --dis_wgan --dis_minibatch --dataset_name 'ZINC_10k' --dec_min_len 10 --filler_epochs 200 --decoration_max_len 50 --filler_optimizer 'Adam' --filler_d_model 256 --filler_max_lr 1e-4 --dis_max_lr 1e-4 --adv_epochs 50
   ```
-  - SpotWGAN on the ZINC dataset with solubility as the optimized property:
+  - WGAN on the ZINC dataset with solubility as the optimized property:
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --dis_wgan --dis_minibatch --dataset_name 'ZINC_10k' --dec_min_len 10 --filler_epochs 200 --decoration_max_len 50 --filler_optimizer 'Adam' --filler_d_model 256 --filler_max_lr 1e-4 --dis_max_lr 1e-4 --adv_epochs 50 --properties 'solubility'
   ```
-  - SpotWGAN on the ZINC dataset with synthesizability as the optimized property:
+  - WGAN on the ZINC dataset with synthesizability as the optimized property:
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --dis_wgan --dis_minibatch --dataset_name 'ZINC_10k' --dec_min_len 10 --filler_epochs 200 --decoration_max_len 50 --filler_optimizer 'Adam' --filler_d_model 256 --filler_max_lr 1e-4 --dis_max_lr 1e-4 --adv_epochs 50 --properties 'synthesizability'
   ```
 
 ## Case Studies on Optimization of Bioactivity (BIO)
   
-  - Training process on the ZINC dataset using SpotGAN
+  - Training process on the ZINC dataset using MIR
   ```
   $ python main.py --filler_pretrain --dis_pretrain --adversarial_train --dataset_name 'ZINC_10k' --dec_min_len 10 --filler_epochs 200 --decoration_max_len 50 --filler_d_model 256 --filler_max_lr 1e-4 --filler_optimizer 'Adam' --adv_epochs 50 --properties 'DRD2'
   ```
@@ -88,19 +90,4 @@ Next, unzip the **DRD2_score.sav.zip** to  **DRD2_score.sav**.
   $ python main.py --test --scaffold_name 'E2'
   ```
   
-## Citation
-  ```
-  C. Li and Y. Yamanishi (2023). SpotGAN: A reverse-transformer GAN generates scaffold-constrained molecules with property optimization. ECML-PKDD 2023.
-  ```
-  
-  BibTeX format:
-  ```
-  @inproceedings{li2023spotgan,
-  title={SpotGAN: A Reverse-Transformer GAN Generates Scaffold-Constrained Molecules with Property Optimization},
-  author={Li, Chen and Yamanishi, Yoshihiro},
-  booktitle={Joint European Conference on Machine Learning and Knowledge Discovery in Databases},
-  pages={323--338},
-  year={2023},
-  organization={Springer}
-}
   ```
