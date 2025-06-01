@@ -1,6 +1,6 @@
 # MIR
 
-A PyTorch implementation of RL-MolGAN: RL-based Transformer GAN for Molecular Generation]{A Reinforcement Learning-Driven Transformer GAN for Molecular Generation.
+A PyTorch implementation of RL-MolGAN: RL-based Transformer GAN for Molecular Generation: A Reinforcement Learning-Driven Transformer GAN for Molecular Generation.
 
 
 ## Installation
