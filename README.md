@@ -7,8 +7,8 @@ A PyTorch implementation of RL-MolGAN: RL-based Transformer GAN for Molecular Ge
 First, download the code.  
 Then, execute the following command:
 ```
-$ conda env create -n spotgan_env -f env.yml
-$ source activate spotgan_env
+$ conda env create -n MIR_env -f env.yml
+$ source activate MIR_env
 ```
 Next, unzip the **DRD2_score.sav.zip** to  **DRD2_score.sav**.
 
